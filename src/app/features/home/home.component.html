@@ -1,0 +1,22 @@
+<mat-toolbar class="navbar" role="banner">
+  <span class="logo">🧋 BubbleTea</span>
+  <span class="spacer"></span>
+  <span class="user-email" aria-label="Email del usuario">{{ user()?.email }}</span>
+  <button mat-button (click)="logout()" aria-label="Cerrar sesión">Cerrar sesión</button>
+</mat-toolbar>
+
+<section class="hero" aria-labelledby="hero-title">
+  <h1 id="hero-title">Tu bubble tea perfecto,<br />a un clic</h1>
+  <p>Descubre nuestra colección artesanal de bubble teas</p>
+</section>
+
+<main class="catalog" aria-label="Catálogo de productos">
+  <h2>Nuestro menú</h2>
+  <div class="product-grid" role="list" aria-label="Lista de productos">
+    @for (product of products(); track product.name) {
+      <div role="listitem">
+        <app-product-card [item]="product" />
+      </div>
+    }
+  </div>
+</main>
