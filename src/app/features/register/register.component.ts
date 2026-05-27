@@ -58,6 +58,7 @@ export class RegisterComponent {
       await this.authService.signUp(email!, password!);
     } catch (err: unknown) {
       this.error.set(this.parseError(err));
+    } finally {
       this.loading.set(false);
     }
   }

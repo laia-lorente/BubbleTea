@@ -63,3 +63,9 @@ mat-card-actions {
   justify-content: center;
   display: flex;
 }
+
+.field-error {
+  color: #c62828;
+  font-size: 0.75rem;
+  margin: -0.5rem 0 0.75rem 0.75rem;
+}

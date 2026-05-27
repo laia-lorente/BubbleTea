@@ -1,7 +1,7 @@
-<mat-toolbar class="navbar" role="banner">
+<mat-toolbar class="navbar">
   <span class="logo">🧋 BubbleTea</span>
   <span class="spacer"></span>
-  <span class="user-email" aria-label="Email del usuario">{{ user()?.email }}</span>
+  <span class="user-email">{{ user()?.email }}</span>
   <button mat-button (click)="logout()" aria-label="Cerrar sesión">Cerrar sesión</button>
 </mat-toolbar>
 

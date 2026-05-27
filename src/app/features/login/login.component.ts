@@ -42,6 +42,7 @@ export class LoginComponent {
       await this.authService.signIn(email!, password!);
     } catch (err: unknown) {
       this.error.set(this.parseError(err));
+    } finally {
       this.loading.set(false);
     }
   }
