@@ -2,7 +2,7 @@
   position: sticky;
   top: 0;
   z-index: 100;
-  background-color: #3b5bdb;
+  background-color: #ff6b35;
   color: white;
 }
 
@@ -26,7 +26,7 @@
 }
 
 .hero {
-  background: linear-gradient(135deg, #3b5bdb 0%, #9775fa 100%);
+  background: linear-gradient(135deg, #ff6b35 0%, #d94f00 100%);
   color: white;
   text-align: center;
   padding: 5rem 1.5rem;
@@ -54,7 +54,7 @@
 .catalog h2 {
   font-size: 1.75rem;
   font-weight: 600;
-  color: #3b5bdb;
+  color: #ff6b35;
   margin: 0 0 1.5rem;
 }
 
@@ -62,4 +62,13 @@
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
   gap: 1.5rem;
+}
+
+.fab {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  z-index: 50;
+  background-color: #ff6b35 !important;
+  color: white !important;
 }
