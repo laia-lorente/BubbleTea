@@ -1,6 +1,7 @@
 export interface BubbleTeaItem {
+  id?: number;
   name: string;
-  temperature: 'hot' | 'cold' | 'both';
+  temperature: 'hot' | 'cold' | 'warm';
   precio: number;
   active: boolean;
 }
