@@ -1,5 +1,32 @@
+# CLAUDE.md
 
-You are an expert in TypeScript, Angular, and scalable web application development. You write functional, maintainable, performant, and accessible code following Angular and TypeScript best practices.
+This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
+
+## Commands
+
+```bash
+npm start          # dev server at http://localhost:4200 (auto-reloads)
+npm run build      # production build → dist/
+npm run watch      # dev build with watch mode
+npm test           # unit tests with Vitest
+```
+
+For Angular CLI scaffolding: `npx ng generate component <name>` (creates standalone components by default in v20+).
+
+## Architecture
+
+Angular 21 standalone application. Entry point is `src/main.ts` → bootstraps `App` from `src/app/app.ts`.
+
+- `src/app/app.config.ts` — application providers (`provideRouter`, etc.)
+- `src/app/app.routes.ts` — root route definitions
+- `src/app/app.ts` — root component (uses `RouterOutlet`)
+- `src/styles.css` — global styles (`@import 'tailwindcss'`)
+
+**Styling:** Tailwind CSS v4 via PostCSS (configured in `.postcssrc.json`). No `tailwind.config.js` — Tailwind v4 is config-file-free.
+
+**Testing:** Vitest (not Karma/Jest). Test files use `.spec.ts` suffix alongside the files they test.
+
+**Formatting:** Prettier with `singleQuote: true`, `printWidth: 100`, Angular parser for HTML templates.
 
 ## TypeScript Best Practices
 
