@@ -13,10 +13,23 @@
 <main class="catalog" aria-label="Catálogo de productos">
   <h2>Nuestro menú</h2>
   <div class="product-grid" role="list" aria-label="Lista de productos">
-    @for (product of products(); track product.name) {
+    @for (product of products(); track product.id ?? product.name) {
       <div role="listitem">
-        <app-product-card [item]="product" />
+        <app-product-card
+          [item]="product"
+          (editClicked)="openEditDialog($event)"
+          (deleteClicked)="openDeleteDialog($event)"
+        />
       </div>
     }
   </div>
 </main>
+
+<button
+  mat-fab
+  class="fab"
+  aria-label="Añadir nuevo bubble tea"
+  (click)="openCreateDialog()"
+>
+  <mat-icon>add</mat-icon>
+</button>
