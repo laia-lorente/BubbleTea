@@ -1,7 +1,16 @@
 const fs = require('fs');
 const path = require('path');
 
-require('dotenv').config({ path: path.resolve(__dirname, '../.env') });
+// Load .env manually — no dotenv dependency needed
+const envFile = path.resolve(__dirname, '../.env');
+if (fs.existsSync(envFile)) {
+  fs.readFileSync(envFile, 'utf-8')
+    .split('\n')
+    .forEach(line => {
+      const [key, ...rest] = line.split('=');
+      if (key && rest.length) process.env[key.trim()] = rest.join('=').trim();
+    });
+}
 
 const env = process.env;
 
