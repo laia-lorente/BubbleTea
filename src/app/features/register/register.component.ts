@@ -42,7 +42,10 @@ export class RegisterComponent {
 
   protected form = this.fb.group(
     {
+      name: ['', Validators.required],
+      surname: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
+      birth_date: ['', Validators.required],
       password: ['', [Validators.required, Validators.minLength(6)]],
       confirmPassword: ['', Validators.required],
     },
@@ -54,8 +57,13 @@ export class RegisterComponent {
     this.loading.set(true);
     this.error.set('');
     try {
-      const { email, password } = this.form.value;
-      await this.authService.signUp(email!, password!);
+      const { email, password, name, surname, birth_date } = this.form.value;
+      await this.authService.signUp(email!, password!, {
+        name: name!,
+        surname: surname!,
+        birth_date: birth_date!,
+        notifications: true,
+      });
     } catch (err: unknown) {
       this.error.set(this.parseError(err));
     } finally {
