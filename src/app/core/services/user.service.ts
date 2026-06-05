@@ -1,5 +1,5 @@
 import { Injectable, inject } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { firstValueFrom } from 'rxjs';
 import { environment } from '../../../environments/environment';
 
@@ -16,7 +16,8 @@ export class UserService {
   private readonly http = inject(HttpClient);
   private readonly apiUrl = environment.apiUrl;
 
-  createUser(payload: CreateUserPayload): Promise<void> {
-    return firstValueFrom(this.http.post<void>(`${this.apiUrl}/users`, payload));
+  createUser(payload: CreateUserPayload, token: string): Promise<void> {
+    const headers = new HttpHeaders({ Authorization: `Bearer ${token}` });
+    return firstValueFrom(this.http.post<void>(`${this.apiUrl}/users`, payload, { headers }));
   }
 }

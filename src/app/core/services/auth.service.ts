@@ -24,8 +24,9 @@ export class AuthService {
   }
 
   async signUp(email: string, password: string, profile: Omit<CreateUserPayload, 'email'>): Promise<void> {
-    await createUserWithEmailAndPassword(this.auth, email, password);
-    await this.userService.createUser({ email, ...profile });
+    const credential = await createUserWithEmailAndPassword(this.auth, email, password);
+    const token = await credential.user.getIdToken();
+    await this.userService.createUser({ email, ...profile }, token);
     await this.router.navigate(['/home']);
   }
 
