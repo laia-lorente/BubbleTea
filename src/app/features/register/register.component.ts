@@ -9,6 +9,7 @@ import {
 import { RouterLink } from '@angular/router';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
+import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { AuthService } from '../../core/services/auth.service';
@@ -26,6 +27,7 @@ export function passwordMatchValidator(control: AbstractControl): ValidationErro
     ReactiveFormsModule,
     RouterLink,
     MatCardModule,
+    MatCheckboxModule,
     MatFormFieldModule,
     MatInputModule,
     MatButtonModule,
@@ -46,6 +48,7 @@ export class RegisterComponent {
       surname: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
       birth_date: ['', Validators.required],
+      notifications: [true],
       password: ['', [Validators.required, Validators.minLength(6)]],
       confirmPassword: ['', Validators.required],
     },
@@ -57,12 +60,12 @@ export class RegisterComponent {
     this.loading.set(true);
     this.error.set('');
     try {
-      const { email, password, name, surname, birth_date } = this.form.value;
+      const { email, password, name, surname, birth_date, notifications } = this.form.value;
       await this.authService.signUp(email!, password!, {
         name: name!,
         surname: surname!,
         birth_date: birth_date!,
-        notifications: true,
+        notifications: notifications ?? false,
       });
     } catch (err: unknown) {
       this.error.set(this.parseError(err));
