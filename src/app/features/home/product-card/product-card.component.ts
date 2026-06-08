@@ -13,42 +13,93 @@ import { BubbleTeaItem } from '../../../shared/models/bubble-tea.model';
   imports: [MatCardModule, MatChipsModule, CurrencyPipe, MatIconButton, MatIconModule, MatTooltipModule],
   styles: [
     `
+      @import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500&display=swap');
+
+      :host {
+        --bg-card: #1c2a1f;
+        --accent-green: #a8e063;
+        --accent-gold: #c9a84c;
+        --text-primary: #e8f0e9;
+        --text-secondary: #7a9c7e;
+        --border: rgba(168, 224, 99, 0.12);
+      }
+
       .card {
         height: 100%;
+        background: var(--bg-card) !important;
+        border: 1px solid var(--border) !important;
+        border-radius: 12px !important;
+        box-shadow: none !important;
         transition:
-          transform 0.2s ease,
-          box-shadow 0.2s ease;
+          transform 0.25s ease,
+          border-color 0.25s ease,
+          box-shadow 0.25s ease;
+        color: var(--text-primary) !important;
+        font-family: 'DM Sans', sans-serif;
       }
+
       .card:hover {
-        transform: translateY(-4px);
-        box-shadow: 0 8px 24px rgba(255, 107, 53, 0.15);
+        transform: translateY(-3px);
+        border-color: rgba(168, 224, 99, 0.3) !important;
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4), 0 0 0 1px rgba(168, 224, 99, 0.08) !important;
       }
+
       .price {
-        font-size: 1.5rem;
-        font-weight: 700;
-        color: #ff6b35;
-        margin: 0.5rem 0 0;
+        font-family: 'DM Serif Display', serif;
+        font-size: 1.75rem;
+        font-weight: 400;
+        font-style: italic;
+        color: var(--accent-green);
+        margin: 0.75rem 0 0;
+        letter-spacing: -0.01em;
       }
+
       .temp {
-        font-size: 0.875rem;
+        font-size: 0.78rem;
+        font-weight: 300;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+        color: var(--text-secondary);
       }
+
       .chip-available {
-        --mdc-chip-elevated-container-color: #fff0e6;
-        --mdc-chip-label-text-color: #d94f00;
+        --mdc-chip-elevated-container-color: rgba(168, 224, 99, 0.1);
+        --mdc-chip-label-text-color: #a8e063;
+        border: 1px solid rgba(168, 224, 99, 0.25) !important;
+        font-size: 0.72rem !important;
+        letter-spacing: 0.05em;
       }
+
       .chip-unavailable {
-        --mdc-chip-elevated-container-color: #f3f4f6;
-        --mdc-chip-label-text-color: #6b7280;
+        --mdc-chip-elevated-container-color: rgba(255, 255, 255, 0.04);
+        --mdc-chip-label-text-color: #4a6350;
+        border: 1px solid rgba(255, 255, 255, 0.06) !important;
+        font-size: 0.72rem !important;
+        letter-spacing: 0.05em;
       }
+
       .actions-row {
         display: flex;
         align-items: center;
         justify-content: space-between;
         width: 100%;
+        padding-top: 0.25rem;
+        border-top: 1px solid var(--border);
+        margin-top: 0.25rem;
       }
+
       .icon-actions {
         display: flex;
-        gap: 0.25rem;
+        gap: 0.1rem;
+      }
+
+      .icon-actions button {
+        color: var(--text-secondary) !important;
+        transition: color 0.15s ease !important;
+      }
+
+      .icon-actions button:hover {
+        color: var(--accent-green) !important;
       }
     `,
   ],
